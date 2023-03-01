@@ -16,7 +16,6 @@
 package net.kepco.srm.bond.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -27,6 +26,7 @@ import org.springframework.transaction.annotation.Transactional;
 import lombok.extern.slf4j.Slf4j;
 import net.kepco.srm.bond.domain.Sample;
 import net.kepco.srm.bond.dto.SampleDto;
+import net.kepco.srm.bond.dto.SampleResponse;
 import net.kepco.srm.bond.mapper.SampleMapper;
 import net.kepco.srm.bond.repository.SampleRepository;
 import net.kepco.srm.framework.exception.CustomEntityNotFoundException;
@@ -130,11 +130,17 @@ public class SampleService /*extends EgovAbstractServiceImpl*/ {
 	 * @return 글 목록
 	 * @exception Exception
 	 */
-	public List<SampleDto> selectSampleList(SampleDto.SearchRequest searchRequest) throws Exception {
-		return sampleMapper.selectSampleList(searchRequest)
-				.stream()
-				.map(SampleDto::of)
-				.collect(Collectors.toList());
+	public List<SampleResponse> selectSampleList(SampleDto.SearchRequest searchRequest) throws Exception {
+		List<SampleResponse> result = sampleMapper.selectSampleList(searchRequest);
+		log.debug(result.toString());
+		return result;
+//		return result.stream()
+//					.map(SampleDto::of)
+//					.collect(Collectors.toList());
+//		return sampleMapper.selectSampleList(searchRequest)
+//				.stream()
+//				.map(SampleDto::of)
+//				.collect(Collectors.toList());
 	}
 
 	/**

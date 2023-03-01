@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="net.kepco.srm.bond.mapper.SampleMapper">
 
-	<resultMap id="sample" type="sample">
-		<result property="id" column="id"/>
-		<result property="name" column="name"/>
-		<result property="description" column="description"/>
-		<result property="useYn" column="use_yn"/>
-		<result property="regUser" column="reg_user"/>
-	</resultMap>
+	<!-- <resultMap id="sampleMap" type="sample">
+		<result property="id" column="ID"/>
+		<result property="name" column="NAME"/>
+		<result property="description" column="DESCRIPTION"/>
+		<result property="useYn" column="USE_YN"/>
+		<result property="regUser" column="REG_USER"/>
+	</resultMap> -->
 
-	<select id="selectSample" resultMap="sample">
+	<select id="selectSample" resultType="sample">
 
 			SELECT
 				ID, NAME, DESCRIPTION, USE_YN, REG_USER
@@ -19,7 +19,7 @@
 
 	</select>
 
-	<select id="selectSampleList" parameterType="sample" resultType="sample">
+	<select id="selectSampleList" resultType="sampleResponse">
 
 			SELECT
 				ID, NAME, DESCRIPTION, USE_YN, REG_USER
@@ -39,7 +39,7 @@
 			LIMIT #{recordCountPerPage} OFFSET #{firstIndex}
 	</select>
 
-	<select id="selectSampleListTotCnt" parameterType="sample" resultType="int">
+	<select id="selectSampleListTotCnt" resultType="int">
 
 			SELECT COUNT(*) totcnt
 			FROM SAMPLE

@@ -8,9 +8,9 @@
                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-        <property name="webBindingInitializer">
+        <!-- <property name="webBindingInitializer">
             <bean class="net.kepco.srm.framework.web.EgovBindingInitializer"/>
-        </property>
+        </property> -->
 		<property name="messageConverters">
 			<list>
 				<!-- for application/json -->

@@ -28,6 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 import net.kepco.srm.bond.dto.SampleDto;
+import net.kepco.srm.bond.dto.SampleResponse;
 import net.kepco.srm.bond.service.SampleService;
 import net.kepco.srm.framework.ApiResponse;
 import net.kepco.srm.framework.MapBuilder;
@@ -79,7 +80,7 @@ public class SampleController {
 	@GetMapping("/selectSampleList.json")
 	public ApiResponse selectSampleList(SampleDto.SearchRequest searchRequest) throws Exception {
 		// log example
-		log.debug("/selectSampleList.json");
+		log.debug("/api/v1/sample/selectSampleList.json");
 
 		// page properties
 		searchRequest.setPageUnit(pageSize);
@@ -96,7 +97,7 @@ public class SampleController {
 		searchRequest.setRecordCountPerPage(paginationInfo.getRecordCountPerPage());
 
 		// sample list
-		List<SampleDto> resultList = sampleService.selectSampleList(searchRequest);
+		List<SampleResponse> resultList = sampleService.selectSampleList(searchRequest);
 		
 		// sample list total count
 		int totCnt = sampleService.selectSampleListTotCnt(searchRequest);

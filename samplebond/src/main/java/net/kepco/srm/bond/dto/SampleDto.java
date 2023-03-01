@@ -12,11 +12,11 @@ import net.kepco.srm.bond.domain.Sample;
 @Builder
 public class SampleDto {
 
-	private String id;
-	private String name;
-	private String description;
+	private String    id;
+	private String    name;
+	private String    description;
 	private String useYn;
-	private String regUser;
+	private String    regUser;
 	
 	/**
 	 * ENTITY를 DTO로 변환
@@ -73,7 +73,7 @@ public class SampleDto {
 		private String id;
 		private String name;
 		private String description;
-		private String useYn;
+		private String   useYn;
 		private String regUser;
 	}
 	

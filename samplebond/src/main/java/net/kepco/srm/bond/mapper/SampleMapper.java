@@ -22,6 +22,7 @@ import org.egovframe.rte.psl.dataaccess.mapper.Mapper;
 
 import net.kepco.srm.bond.domain.Sample;
 import net.kepco.srm.bond.dto.SampleDto;
+import net.kepco.srm.bond.dto.SampleResponse;
 
 /**
  * sample에 관한 데이터처리 매퍼 클래스
@@ -55,7 +56,7 @@ public interface SampleMapper {
 	 * @return 글 목록
 	 * @exception Exception
 	 */
-	List<Sample> selectSampleList(SampleDto.SearchRequest searchRequest) throws Exception;
+	List<SampleResponse> selectSampleList(SampleDto.SearchRequest searchRequest) throws Exception;
 
 	/**
 	 * 글 총 갯수를 조회한다.

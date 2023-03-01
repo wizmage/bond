@@ -13,18 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package net.kepco.srm.bond.domain;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package net.kepco.srm.bond.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.kepco.srm.bond.dto.SampleDto;
 
 /**
  * @Class Name : SampleVO.java
@@ -46,48 +40,21 @@ import net.kepco.srm.bond.dto.SampleDto;
 @ToString
 @Getter
 @Setter
-@Entity
-@Table(name = "SAMPLE")
-public class Sample {
+//@Alias("sampleResponse")
+public class SampleResponse {
 
 	/** 아이디 */
-	@Id
-	@Column(name = "ID")
 	private String id;
 
 	/** 이름 */
-	@Column(name = "NAME")
 	private String name;
 
 	/** 내용 */
-	@Column(name = "DESCRIPTION")
 	private String description;
 
 	/** 사용여부 */
-	@Column(name = "USE_YN", columnDefinition = "char", length = 1)
 	private String useYn;
 
 	/** 등록자 */
-	@Column(name = "REG_USER")
 	private String regUser;
-	
-	/** Constructors */
-	public Sample(SampleDto.SearchRequest searchRequest) {
-		this.id = searchRequest.getId();
-	}
-	
-	public Sample(SampleDto.RegistRequest registRequest) {
-		this.id = registRequest.getId();
-		this.name = registRequest.getName();
-		this.description = registRequest.getDescription();
-		this.useYn = registRequest.getUseYn();
-		this.regUser = registRequest.getRegUser();
-	}
-	
-	public void update(SampleDto.UpdateRequest updateRequest) {
-		this.name = updateRequest.getName();
-		this.description = updateRequest.getDescription();
-		this.useYn = updateRequest.getUseYn();
-		this.regUser = updateRequest.getRegUser();
-	}
 }
