@@ -1,6 +1,12 @@
 <template>
-  <router-view/>
+  <the-layout>
+    <router-view></router-view>
+  </the-layout>
 </template>
+
+<script setup>
+import TheLayout from "@/layouts/TheLayout.vue";
+</script>
 
 <style>
 #app {

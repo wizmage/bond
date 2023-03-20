@@ -14,11 +14,11 @@ module.exports = defineConfig({
     }
   },
   publicPath: "/bond/",
-  chainWebpack: (config) => {  
-    // svg loader
-    const svgRule = config.module.rule("svg");    
-    svgRule.uses.clear();    
-    svgRule.use("vue-svg-loader").loader("vue-svg-loader");
+   //chainWebpack: (config) => {  
+    //svg loader
+    // const svgRule = config.module.rule("svg");    
+    // svgRule.uses.clear();    
+    // svgRule.use("vue-svg-loader").loader("vue-svg-loader");
     
     // image loader
     /*const imgRule = config.module.rule("images");
@@ -34,5 +34,5 @@ module.exports = defineConfig({
     			}
     		})
     		.end()*/
-  }
+   //}
 })

@@ -1,10 +1,10 @@
 <template>
-    <div>SampleRegisterPage</div>
+    <footer>Copyright</footer>
 </template>
 
 <script>
 export default {
-	name: 'SampleRegisterPage',
+	name: 'FooterView',
 	props: {},
 	setup() {
 		/** data */
@@ -20,5 +20,10 @@ export default {
 </script>
 
 <style scoped>
-
+footer {
+	background: gray; 
+	padding-top:20px; 
+	padding-bottom: 20px; 
+	color: white;
+}
 </style>

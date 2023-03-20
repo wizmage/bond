@@ -1,61 +1,66 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
-// import views
-import MainLayout     from '@/views/MainLayout.vue'
+const hideAll = {
+	hideHeader: true, 
+	hideFooter: true,
+	hideSidebar: true,
+	hideContentTop: true
+};
 
-/**
- * router 세팅
- * component에 () => import 구문으로 필요할때 js파일을 호출
- */
 const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: () => import('@/views/LoginPage.vue')
-  },
-  {
-    path: '/',
-    name: 'MainLayout',
-    component: MainLayout,
-    children: [
-		{
-    		path: '',
-    		name: 'MainPage',
-    		component: () => import('@/views/MainPage.vue')
-    	},
-    	{
-    		path: '/sample/list',
-    		name: 'SampleList',
-    		component: () => import('@/views/sample/SampleListPage.vue')
-    	},
-		{
-    		path: '/sample2/list',
-    		name: 'SampleList2',
-    		component: () => import('@/views/sample/SampleList2Page.vue')
-    	},
-    	{
-    		path: '/sample/detail/:sampleId',
-    		name: 'SampleDetail',
-    		component: () => import('@/views/sample/SampleDetailPage.vue'),
-			props: true
-    	},
-    	{
-    		path: '/sample/register',
-    		name: 'SampleRegister',
-    		component: () => import('@/views/sample/SampleRegisterPage.vue')
-    	}
-    ]
-  },
-  {
-	path: '/:pathMatch(.*)*',
-	name: 'NotFound', // error code 404
-	component: () => import('@/views/NotFoundPage.vue')
-  }
+	{
+		path: '/login',
+		name: 'login',
+		component: () => import('@/views/LoginView.vue'),
+		meta: { ...hideAll }
+	},
+	{
+		path: '',
+		name: 'MainPage',
+		component: () => import('@/views/MainView.vue'),
+		meta: { hideSidebar: true }
+	},
+	{
+		path: '/sample',
+		redirect: '/sample/list'
+	},
+	{
+		path: '/sample/list',
+		name: 'SampleListView',
+		component: () => import('@/views/sample/SampleListView.vue')
+	},
+	{
+		path: '/sample/detail/:id',
+		name: 'SampleDetailView',
+		component: () => import('@/views/sample/SampleDetailView.vue'),
+		props: true
+	},
+	{
+		path: '/sample/edit/:id',
+		name: 'SampleEditView',
+		component: () => import('@/views/sample/SampleEditView.vue'),
+		props: true
+	},
+	{
+		path: '/sample/new',
+		name: 'SimpleNewView',
+		component: () => import('@/views/sample/SampleNewView.vue')
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		name: 'NotFound', // error code 404
+		component: () => import('@/views/NotFoundView.vue'),
+		meta: { ...hideAll }
+	}
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+	history: createWebHistory(process.env.BASE_URL),
+	routes
+});
+
+router.afterEach((to) => {
+	to.meta.title = 'Vue3 Sample';
+});
 
 export default router
